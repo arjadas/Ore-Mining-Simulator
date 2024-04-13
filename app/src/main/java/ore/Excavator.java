@@ -5,7 +5,7 @@ public class Excavator implements Machine {
 
 import ch.aplu.jgamegrid.Actor;
 
-public class Excavator extends Actor
+public class Excavator extends Actor implements Machine
 {
     public Excavator()
     {
