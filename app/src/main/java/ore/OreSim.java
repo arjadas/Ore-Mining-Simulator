@@ -42,13 +42,7 @@ public class OreSim extends GameGrid implements GGKeyListener
 
 
 
-  private class Ore extends Actor
-  {
-    public Ore()
-    {
-      super("sprites/ore.png",2);
-    }
-  }
+
 
   private class Pusher extends Actor
   {
