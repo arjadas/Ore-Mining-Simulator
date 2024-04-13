@@ -6,7 +6,7 @@ import ch.aplu.jgamegrid.Actor;
 public class Ore implements Item {
 }*/
 
-public class Ore extends Actor
+public class Ore extends Actor implements Item
 {
     public Ore()
     {

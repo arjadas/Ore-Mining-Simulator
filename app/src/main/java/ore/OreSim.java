@@ -104,31 +104,13 @@ public class OreSim extends GameGrid implements GGKeyListener
     }
   }
 
-  private class Bulldozer extends Actor
-  {
-    public Bulldozer()
-    {
-      super(true, "sprites/bulldozer.png");  // Rotatable
-    }
-  }
 
-  private class Excavator extends Actor
-  {
-    public Excavator()
-    {
-      super(true, "sprites/excavator.png");  // Rotatable
-    }
-  }
 
-  private class Rock extends Actor
-  {
-    public Rock() {super("sprites/rock.png");}
-  }
 
-  private class Clay extends Actor
-  {
-    public Clay() {super("sprites/clay.png");  }
-    }
+
+
+
+
   // ------------- End of inner classes ------
   //
   private MapGrid grid;
