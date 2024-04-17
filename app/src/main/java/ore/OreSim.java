@@ -45,7 +45,7 @@ public class OreSim extends GameGrid implements GGKeyListener
   private MapGrid grid;
   private int nbHorzCells;
   private int nbVertCells;
-  private final Color borderColor = new Color(100, 100, 100);
+  public final Color borderColor = new Color(100, 100, 100);
   private Ore[] ores;
   private Target[] targets;
   private Pusher pusher;
@@ -76,22 +76,6 @@ public class OreSim extends GameGrid implements GGKeyListener
   }
 
   /**
-   * Check the number of ores that are collected
-   * @return
-   */
-
-  private int checkOresDone() {
-    int nbTarget = 0;
-    for (int i = 0; i < grid.getNbOres(); i++)
-    {
-      if (ores[i].getIdVisible() == 1)
-        nbTarget++;
-    }
-
-    return nbTarget;
-  }
-
-  /**
    * The main method to run the game
    * @param isDisplayingUI
    * @return
@@ -109,7 +93,7 @@ public class OreSim extends GameGrid implements GGKeyListener
         doRun();
     }
 
-    int oresDone = checkOresDone();
+    int oresDone = Ore.checkOresDone(ores, grid);
     double ONE_SECOND = 1000.0;
     while(oresDone < grid.getNbOres() && gameDuration >= 0) {
       try {
@@ -123,7 +107,7 @@ public class OreSim extends GameGrid implements GGKeyListener
           updateLogResult();
         }
 
-        oresDone = checkOresDone();
+        oresDone = Ore.checkOresDone(ores, grid);
       } catch (InterruptedException e) {
         throw new RuntimeException(e);
       }
@@ -321,7 +305,7 @@ public class OreSim extends GameGrid implements GGKeyListener
     }
 
 
-    if (next != null && canMove(next))
+    if (next != null && pusher.canMove(next))
     {
       pusher.setLocation(next);
       updateLogResult();
@@ -335,89 +319,9 @@ public class OreSim extends GameGrid implements GGKeyListener
     return true;
   }
 
-  /**
-   * Check if we can move the pusher into the location
-   * @param location
-   * @return
-   */
-  protected boolean canMove(Location location)
-  {
-    // Test if try to move into border, rock or clay
-    Color c = getBg().getColor(location);
-    Rock rock = (Rock)getOneActorAt(location, Rock.class);
-    Clay clay = (Clay)getOneActorAt(location, Clay.class);
-    Bulldozer bulldozer = (Bulldozer)getOneActorAt(location, Bulldozer.class);
-    Excavator excavator = (Excavator)getOneActorAt(location, Excavator.class);
-    if (c.equals(borderColor) || rock != null || clay != null || bulldozer != null || excavator != null)
-      return false;
-    else // Test if there is an ore
-    {
-      Ore ore = (Ore)getOneActorAt(location, Ore.class);
-      if (ore != null)
-      {
 
-          // Try to move the ore
-           ore.setDirection(pusher.getDirection());
-          if (moveOre(ore))
-            return true;
-          else
-            return false;
 
-      }
-    }
 
-    return true;
-  }
-
-  /**
-   * When the pusher pushes the ore in 1 direction, this method will be called to check if the ore can move in that direction
-   *  and if it can move, then it changes the location
-   * @param ore
-   * @return
-   */
-  private boolean moveOre(Ore ore)
-  {
-    Location next = ore.getNextMoveLocation();
-    // Test if try to move into border
-    Color c = getBg().getColor(next);;
-    Rock rock = (Rock)getOneActorAt(next, Rock.class);
-    Clay clay = (Clay)getOneActorAt(next, Clay.class);
-    if (c.equals(borderColor) || rock != null || clay != null)
-      return false;
-
-    // Test if there is another ore
-    Ore neighbourOre =
-      (Ore)getOneActorAt(next, Ore.class);
-    if (neighbourOre != null)
-      return false;
-
-    // Reset the target if the ore is moved out of target
-    Location currentLocation = ore.getLocation();
-    List<Actor> actors = getActorsAt(currentLocation);
-    if (actors != null) {
-      for (Actor actor : actors) {
-        if (actor instanceof Target) {
-          Target currentTarget = (Target) actor;
-          currentTarget.show();
-          ore.show(0);
-        }
-      }
-    }
-
-    // Move the ore
-    ore.setLocation(next);
-
-    // Check if we are at a target
-    Target nextTarget = (Target) getOneActorAt(next, Target.class);
-    if (nextTarget != null) {
-      ore.show(1);
-      nextTarget.hide();
-    } else {
-      ore.show(0);
-    }
-
-    return true;
-  }
 
   /**
    * The method will generate a log result for all the movements of all actors

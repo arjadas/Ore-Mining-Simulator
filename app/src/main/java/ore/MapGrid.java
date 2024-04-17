@@ -1,3 +1,4 @@
+
 package ore;
 import ch.aplu.jgamegrid.*;
 
@@ -9,48 +10,48 @@ public class MapGrid
   private int nbStones = 0;
 
   private final static String map_0 =
-    "    xxxxx          " + // 0 (19)
-    "    x...x          " + // 1
-    "    x*..x          " + // 2
-    "  xxx...xx         " + // 3
-    "  x......x         " + // 4
-    "xxx...RD.x   xxxxxx" + // 5
-    "x.....RD.xxxxx....x" + // 6
-    "x...*............ox" + // 7
-    "xxxxx.DDD.xPxx...ox" + // 8
-    "    x.....xxxxxxxxx" + // 9
-    "    xxxxxxx        ";  //10
+          "    xxxxx          " + // 0 (19)
+                  "    x...x          " + // 1
+                  "    x*..x          " + // 2
+                  "  xxx...xx         " + // 3
+                  "  x......x         " + // 4
+                  "xxx...RD.x   xxxxxx" + // 5
+                  "x.....RD.xxxxx....x" + // 6
+                  "x...*............ox" + // 7
+                  "xxxxx.DDD.xPxx...ox" + // 8
+                  "    x.....xxxxxxxxx" + // 9
+                  "    xxxxxxx        ";  //10
   private final static int nbHorzCells_0 = 19;
   private final static int nbVertCells_0 = 11;
 
   private final static String map_1 =
-    "xxxxxxxxxxxx" + // 0  (14)
-    "x..........x" + // 0  (14)
-    "x....RB....x" + // 1
-    "xo...R.*...x" + // 2
-    "xo...RDDDDDx" + // 3
-    "xP....ERRRRx" + // 4
-    "x....RRR*.xx" + // 5
-    "x..........x" + // 6
-    "xxxxxxxxxxxx";  // 7
+          "xxxxxxxxxxxx" + // 0  (14)
+                  "x..........x" + // 0  (14)
+                  "x....RB....x" + // 1
+                  "xo...R.*...x" + // 2
+                  "xo...RDDDDDx" + // 3
+                  "xP....ERRRRx" + // 4
+                  "x....RRR*.xx" + // 5
+                  "x..........x" + // 6
+                  "xxxxxxxxxxxx";  // 7
 
   private final static int nbHorzCells_1 = 12;
   private final static int nbVertCells_1 = 9;
 
   private final static String[] mapModel =
-  {
-          map_0, map_1
-  };
+          {
+                  map_0, map_1
+          };
 
   private final static int[] nbHorzCellsModel =
-  {
-    nbHorzCells_0, nbHorzCells_1
-  };
+          {
+                  nbHorzCells_0, nbHorzCells_1
+          };
 
   private final static int[] nbVertCellsModel =
-  {
-    nbVertCells_0, nbVertCells_1
-  };
+          {
+                  nbVertCells_0, nbVertCells_1
+          };
 
   private static int model;
 

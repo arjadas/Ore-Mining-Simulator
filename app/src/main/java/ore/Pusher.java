@@ -7,6 +7,7 @@ public class Pusher implements Machine{
 import ch.aplu.jgamegrid.Actor;
 import ch.aplu.jgamegrid.Location;
 
+import java.awt.*;
 import java.util.List;
 
 public class Pusher extends Actor implements Machine
@@ -63,12 +64,46 @@ public class Pusher extends Actor implements Machine
                 if (curTarget != null){
                     curTarget.show();
                 }
-                if (next != null && oreSim.canMove(next))
+                if (next != null && canMove(next))
                 {
                     setLocation(next);
                 }
                 oreSim.refresh();
             }
         }
+    }
+
+    /**
+     * Check if we can move the pusher into the location
+     * @param location
+     * @return
+     */
+    public boolean canMove(Location location)
+    {
+        // Test if try to move into border, rock or clay
+        Color c = oreSim.getBg().getColor(location);
+        Rock rock = (Rock) oreSim.getOneActorAt(location, Rock.class);
+        Clay clay = (Clay) oreSim.getOneActorAt(location, Clay.class);
+        Bulldozer bulldozer = (Bulldozer) oreSim.getOneActorAt(location, Bulldozer.class);
+        Excavator excavator = (Excavator) oreSim.getOneActorAt(location, Excavator.class);
+        if (c.equals(oreSim.borderColor) || rock != null || clay != null || bulldozer != null || excavator != null)
+            return false;
+        else // Test if there is an ore
+        {
+            Ore ore = (Ore) oreSim.getOneActorAt(location, Ore.class);
+            if (ore != null)
+            {
+
+                // Try to move the ore
+                ore.setDirection(getDirection());
+                if (ore.moveOre(oreSim))
+                    return true;
+                else
+                    return false;
+
+            }
+        }
+
+        return true;
     }
 }
