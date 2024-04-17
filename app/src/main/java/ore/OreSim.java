@@ -40,13 +40,6 @@ public class OreSim extends GameGrid implements GGKeyListener
     }
   }
 
-
-
-
-
-
-
-
   // ------------- End of inner classes ------
   //
   private MapGrid grid;
@@ -436,7 +429,7 @@ public class OreSim extends GameGrid implements GGKeyListener
     List<Actor> pushers = getActors(Pusher.class);
     List<Actor> ores = getActors(Ore.class);
     List<Actor> targets = getActors(Target.class);
-    List<Actor> rocks = getActors(Clay.class);
+    List<Actor> rocks = getActors(Rock.class);
     List<Actor> clays = getActors(Clay.class);
     List<Actor> bulldozers = getActors(Bulldozer.class);
     List<Actor> excavators = getActors(Excavator.class);
