@@ -226,7 +226,7 @@ public class OreSim extends GameGrid implements GGKeyListener
 
         if (a == ElementType.BULLDOZER)
         {
-          bulldozer = new Bulldozer();
+          bulldozer = new Bulldozer(this);
           addActor(bulldozer, location);
 
         }
