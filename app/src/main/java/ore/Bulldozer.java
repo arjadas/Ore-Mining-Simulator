@@ -83,23 +83,19 @@ public class Bulldozer extends Actor implements Machine
         // Test if try to move into border, rock or clay
         Color c = oreSim.getBg().getColor(location);
         Rock rock = (Rock) oreSim.getOneActorAt(location, Rock.class);
-        Clay clay = (Clay) oreSim.getOneActorAt(location, Clay.class);
+        Ore ore = (Ore) oreSim.getOneActorAt(location, Ore.class);
         Pusher pusher = (Pusher) oreSim.getOneActorAt(location, Pusher.class);
         Excavator excavator = (Excavator) oreSim.getOneActorAt(location, Excavator.class);
-        if (c.equals(oreSim.borderColor) || rock != null || clay != null || pusher != null || excavator != null)
+        if (c.equals(oreSim.borderColor) || rock != null || ore != null || pusher != null || excavator != null)
             return false;
-        else // Test if there is an ore
+        else // Test if there is a clay
         {
-            Ore ore = (Ore) oreSim.getOneActorAt(location, Ore.class);
-            if (ore != null)
+            Clay clay = (Clay) oreSim.getOneActorAt(location, Clay.class);
+            if (clay != null)
             {
 
-                // Try to move the ore
-                ore.setDirection(getDirection());
-                if (ore.moveOre(oreSim))
-                    return true;
-                else
-                    return false;
+                // remove clay
+                clay.removeSelf();
 
             }
         }

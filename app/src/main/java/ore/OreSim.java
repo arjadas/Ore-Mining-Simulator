@@ -104,6 +104,8 @@ public class OreSim extends GameGrid implements GGKeyListener
         setTitle(title);
         if (isAutoMode) {
           pusher.autoMoveNext(isFinished);
+          bulldozer.autoMoveNext(isFinished);
+          excavator.autoMoveNext(isFinished);
           updateLogResult();
         }
 
@@ -228,13 +230,13 @@ public class OreSim extends GameGrid implements GGKeyListener
         {
           bulldozer = new Bulldozer(this);
           addActor(bulldozer, location);
-
+          bulldozer.setupBulldozer(isAutoMode, controls);
         }
         if (a == ElementType.EXCAVATOR)
         {
-          excavator = new Excavator();
+          excavator = new Excavator(this);
           addActor(excavator, location);
-
+          excavator.setupExcavator(isAutoMode, controls);
         }
       }
     }
@@ -305,7 +307,7 @@ public class OreSim extends GameGrid implements GGKeyListener
     }
 
 
-    if (next != null && canMove(next))
+    if (next != null && pusher.canMove(next))
     {
       pusher.setLocation(next);
       updateLogResult();
@@ -316,40 +318,6 @@ public class OreSim extends GameGrid implements GGKeyListener
 
   public boolean keyReleased(KeyEvent evt)
   {
-    return true;
-  }
-
-  /**
-   * Check if we can move the pusher into the location
-   * @param location
-   * @return
-   */
-  protected boolean canMove(Location location)
-  {
-    // Test if try to move into border, rock or clay
-    Color c = getBg().getColor(location);
-    Rock rock = (Rock)getOneActorAt(location, Rock.class);
-    Clay clay = (Clay)getOneActorAt(location, Clay.class);
-    Bulldozer bulldozer = (Bulldozer)getOneActorAt(location, Bulldozer.class);
-    Excavator excavator = (Excavator)getOneActorAt(location, Excavator.class);
-    if (c.equals(borderColor) || rock != null || clay != null || bulldozer != null || excavator != null)
-      return false;
-    else // Test if there is an ore
-    {
-      Ore ore = (Ore)getOneActorAt(location, Ore.class);
-      if (ore != null)
-      {
-
-        // Try to move the ore
-        ore.setDirection(pusher.getDirection());
-        if (ore.moveOre(this))
-          return true;
-        else
-          return false;
-
-      }
-    }
-
     return true;
   }
 
