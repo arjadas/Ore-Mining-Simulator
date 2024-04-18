@@ -14,7 +14,8 @@ public class Excavator extends Actor implements Machine
 {
     private List<String> controls = null;
     private int autoMovementIndex = 0;
-
+    private int movesCount = 0;
+    private int itemsRemovedCount = 0;
     private OreSim oreSim;
 
     public Excavator(OreSim oreSim)
@@ -60,13 +61,14 @@ public class Excavator extends Actor implements Machine
                         break;
                 }
 
-                Target curTarget = (Target) oreSim.getOneActorAt(getLocation(), Target.class);
+                /*Target curTarget = (Target) oreSim.getOneActorAt(getLocation(), Target.class);
                 if (curTarget != null){
                     curTarget.show();
-                }
+                }*/
                 if (next != null && canMove(next))
                 {
                     setLocation(next);
+                    movesCount++;
                 }
                 oreSim.refresh();
             }
@@ -96,10 +98,20 @@ public class Excavator extends Actor implements Machine
 
                 // remove rock
                 rock.removeSelf();
-
+                itemsRemovedCount++;
             }
         }
 
         return true;
+    }
+
+    // Method to retrieve moves count
+    public int getMovesCount() {
+        return movesCount;
+    }
+
+    // Method to retrieve items removed count
+    public int getItemsRemovedCount() {
+        return itemsRemovedCount;
     }
 }

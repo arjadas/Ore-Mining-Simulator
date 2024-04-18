@@ -167,11 +167,11 @@ public class OreSim extends GameGrid implements GGKeyListener
     FileWriter fileWriter = null;
     try {
       fileWriter = new FileWriter(statisticsFile);
-      fileWriter.write("Pusher-1 Moves: 10\n");
-      fileWriter.write("Excavator-1 Moves: 5\n");
-      fileWriter.write("Excavator-1 Rock removed: 3\n");
-      fileWriter.write("Bulldozer-1 Moves: 2\n");
-      fileWriter.write("Bulldozer-1 Clay removed: 1\n");
+      fileWriter.write("Pusher-1 Moves: " + pusher.getMovesCount() + "\n");
+      fileWriter.write("Excavator-1 Moves: " + excavator.getMovesCount() + "\n");
+      fileWriter.write("Excavator-1 Rock removed: " + excavator.getItemsRemovedCount() + "\n");
+      fileWriter.write("Bulldozer-1 Moves: " + bulldozer.getMovesCount() + "\n");
+      fileWriter.write("Bulldozer-1 Clay removed: " + bulldozer.getItemsRemovedCount() + "\n");
     } catch (IOException e) {
       System.out.println("Cannot write to file - e: " + e.getLocalizedMessage());
     } finally {

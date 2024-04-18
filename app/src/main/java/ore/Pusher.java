@@ -14,7 +14,7 @@ public class Pusher extends Actor implements Machine
 {
     private List<String> controls = null;
     private int autoMovementIndex = 0;
-
+    private int movesCount = 0;
     private OreSim oreSim;
 
     public Pusher(OreSim oreSim)
@@ -67,6 +67,7 @@ public class Pusher extends Actor implements Machine
                 if (next != null && canMove(next))
                 {
                     setLocation(next);
+                    movesCount++;
                 }
                 oreSim.refresh();
             }
@@ -105,5 +106,9 @@ public class Pusher extends Actor implements Machine
         }
 
         return true;
+    }
+
+    public int getMovesCount() {
+        return movesCount;
     }
 }
