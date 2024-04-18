@@ -4,8 +4,8 @@ import ch.aplu.jgamegrid.*;
 
 public class MapGrid
 {
-  protected static int nbHorzCells = -1;
-  protected static int nbVertCells = -1;
+  private static int nbHorzCells = -1;
+  private static int nbVertCells = -1;
   private OreSim.ElementType[][] mapElements; // = new OreSim.ElementType[nbHorzCells][nbVertCells];
   private int nbStones = 0;
 
