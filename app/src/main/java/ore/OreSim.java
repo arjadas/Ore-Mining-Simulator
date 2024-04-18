@@ -73,6 +73,7 @@ public class OreSim extends GameGrid implements GGKeyListener
     gameDuration = Integer.parseInt(properties.getProperty("duration"));
     setSimulationPeriod(Integer.parseInt(properties.getProperty("simulationPeriod")));
     controls = Arrays.asList(properties.getProperty("machines.movements").split(","));
+
   }
 
   /**
@@ -104,8 +105,8 @@ public class OreSim extends GameGrid implements GGKeyListener
         setTitle(title);
         if (isAutoMode) {
           pusher.autoMoveNext(isFinished);
-          bulldozer.autoMoveNext(isFinished);
-          excavator.autoMoveNext(isFinished);
+          if (bulldozer != null) bulldozer.autoMoveNext(isFinished);
+          if (excavator != null) excavator.autoMoveNext(isFinished);
           updateLogResult();
         }
 
@@ -165,13 +166,32 @@ public class OreSim extends GameGrid implements GGKeyListener
   private void updateStatistics() {
     File statisticsFile = new File("statistics.txt");
     FileWriter fileWriter = null;
+
+    int pusherMoves = 0, excavatorMoves = 0, bulldozerMoves = 0;
+    int rocksRemovedCount = 0, clayRemovedCount = 0;
+
+    if (pusher != null) {
+      pusherMoves = pusher.getMovesCount();
+    }
+
+    if (excavator != null) {
+      excavatorMoves = excavator.getMovesCount();
+      rocksRemovedCount = excavator.getItemsRemovedCount();
+    }
+
+    if (bulldozer != null) {
+      bulldozerMoves = bulldozer.getMovesCount();
+      clayRemovedCount = bulldozer.getItemsRemovedCount();
+    }
+
+
     try {
       fileWriter = new FileWriter(statisticsFile);
-      fileWriter.write("Pusher-1 Moves: " + pusher.getMovesCount() + "\n");
-      fileWriter.write("Excavator-1 Moves: " + excavator.getMovesCount() + "\n");
-      fileWriter.write("Excavator-1 Rock removed: " + excavator.getItemsRemovedCount() + "\n");
-      fileWriter.write("Bulldozer-1 Moves: " + bulldozer.getMovesCount() + "\n");
-      fileWriter.write("Bulldozer-1 Clay removed: " + bulldozer.getItemsRemovedCount() + "\n");
+      fileWriter.write("Pusher-1 Moves: " + pusherMoves + "\n");
+      fileWriter.write("Excavator-1 Moves: " + excavatorMoves + "\n");
+      fileWriter.write("Excavator-1 Rock removed: " + rocksRemovedCount + "\n");
+      fileWriter.write("Bulldozer-1 Moves: " + bulldozerMoves + "\n");
+      fileWriter.write("Bulldozer-1 Clay removed: " + clayRemovedCount + "\n");
     } catch (IOException e) {
       System.out.println("Cannot write to file - e: " + e.getLocalizedMessage());
     } finally {
