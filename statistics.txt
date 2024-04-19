@@ -1,0 +1,5 @@
+Pusher-1 Moves: 0
+Excavator-1 Moves: 0
+Excavator-1 Rock removed: 0
+Bulldozer-1 Moves: 0
+Bulldozer-1 Clay removed: 0
