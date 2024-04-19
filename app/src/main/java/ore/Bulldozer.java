@@ -76,7 +76,7 @@ public class Bulldozer extends Actor implements Machine
      */
     public boolean canMove(Location location)
     {
-        // Test if try to move into border, rock or clay
+        // Test where it is trying to move to
         Color c = oreSim.getBg().getColor(location);
         Rock rock = (Rock) oreSim.getOneActorAt(location, Rock.class);
         Ore ore = (Ore) oreSim.getOneActorAt(location, Ore.class);
@@ -98,6 +98,8 @@ public class Bulldozer extends Actor implements Machine
 
         return true;
     }
+
+    // added new getters
 
     public int getMovesCount() {
         return movesCount;

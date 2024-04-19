@@ -101,9 +101,9 @@ public class OreSim extends GameGrid implements GGKeyListener
         String title = String.format("# Ores at Target: %d. Time left: %.2f seconds", oresDone, gameDuration);
         setTitle(title);
         if (isAutoMode) {
-          pusher.autoMoveNext(isFinished);
-          if (bulldozer != null) bulldozer.autoMoveNext(isFinished);
-          if (excavator != null) excavator.autoMoveNext(isFinished);
+          pusher.autoMoveNext(isFinished);  // there's always going to be a pusher
+          if (bulldozer != null) bulldozer.autoMoveNext(isFinished);  // checking first if this  level contains machine
+          if (excavator != null) excavator.autoMoveNext(isFinished);  // checking first if this  level contains machine
           updateLogResult();
         }
 
@@ -138,6 +138,7 @@ public class OreSim extends GameGrid implements GGKeyListener
     try {
       fileWriter = new FileWriter(statisticsFile);
 
+      // first check if the machines exist, then write on the file
       if (pusher != null )
         fileWriter.write("Pusher-" + pusher.getID() + " Moves: " + pusher.getMovesCount() + "\n");
 

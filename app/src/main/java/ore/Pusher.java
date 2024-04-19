@@ -58,6 +58,7 @@ public class Pusher extends Actor implements Machine
                         break;
                 }
 
+                // shows the target
                 Target curTarget = (Target) oreSim.getOneActorAt(getLocation(), Target.class);
                 if (curTarget != null){
                     curTarget.show();
