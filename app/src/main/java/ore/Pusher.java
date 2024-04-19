@@ -12,15 +12,17 @@ import java.util.List;
 
 public class Pusher extends Actor implements Machine
 {
+    private int ID;
     private List<String> controls = null;
     private int autoMovementIndex = 0;
     private int movesCount = 0;
     private OreSim oreSim;
 
-    public Pusher(OreSim oreSim)
+    public Pusher(OreSim oreSim, int ID)
     {
         super(true, "sprites/pusher.png");  // Rotatable
         this.oreSim = oreSim;
+        this.ID = ID;
     }
     public void setupPusher(boolean isAutoMode, List<String> controls) {
         this.controls = controls;
@@ -110,5 +112,9 @@ public class Pusher extends Actor implements Machine
 
     public int getMovesCount() {
         return movesCount;
+    }
+
+    public int getID() {
+        return ID;
     }
 }

@@ -12,16 +12,18 @@ import java.util.List;
 
 public class Excavator extends Actor implements Machine
 {
+    private int ID;
     private List<String> controls = null;
     private int autoMovementIndex = 0;
     private int movesCount = 0;
     private int itemsRemovedCount = 0;
     private OreSim oreSim;
 
-    public Excavator(OreSim oreSim)
+    public Excavator(OreSim oreSim, int ID)
     {
         super(true, "sprites/excavator.png");  // Rotatable
         this.oreSim = oreSim;
+        this.ID = ID;
     }
     public void setupExcavator(boolean isAutoMode, List<String> controls) {
         this.controls = controls;
@@ -113,5 +115,8 @@ public class Excavator extends Actor implements Machine
     // Method to retrieve items removed count
     public int getItemsRemovedCount() {
         return itemsRemovedCount;
+    }
+    public int getID() {
+        return ID;
     }
 }

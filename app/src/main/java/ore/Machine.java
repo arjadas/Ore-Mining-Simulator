@@ -12,5 +12,9 @@ public interface Machine {
 
     public boolean canMove(Location location);
 
+    public int getMovesCount();
+
+    public int getID();
+
 
 }

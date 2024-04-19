@@ -27,7 +27,7 @@ public abstract class Drawer {
                 OreSim.ElementType a = oreSim.grid.getCell(location);
                 if (a == OreSim.ElementType.PUSHER)
                 {
-                    oreSim.pusher = new Pusher(oreSim);
+                    oreSim.pusher = new Pusher(oreSim, ++oreSim.pusherCount);
                     oreSim.addActor(oreSim.pusher, location);
                     oreSim.pusher.setupPusher(oreSim.isAutoMode, oreSim.controls);
                 }
@@ -56,13 +56,13 @@ public abstract class Drawer {
 
                 if (a == OreSim.ElementType.BULLDOZER)
                 {
-                    oreSim.bulldozer = new Bulldozer(oreSim);
+                    oreSim.bulldozer = new Bulldozer(oreSim, ++oreSim.bulldozerCount);
                     oreSim.addActor(oreSim.bulldozer, location);
                     oreSim.bulldozer.setupBulldozer(oreSim.isAutoMode, oreSim.controls);
                 }
                 if (a == OreSim.ElementType.EXCAVATOR)
                 {
-                    oreSim.excavator = new Excavator(oreSim);
+                    oreSim.excavator = new Excavator(oreSim, ++oreSim.excavatorCount);
                     oreSim.addActor(oreSim.excavator, location);
                     oreSim.excavator.setupExcavator(oreSim.isAutoMode, oreSim.controls);
                 }

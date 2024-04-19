@@ -55,6 +55,7 @@ public class OreSim extends GameGrid implements GGKeyListener
   private double gameDuration;
   protected List<String> controls;
   private int movementIndex;
+  protected int pusherCount = 0, bulldozerCount = 0, excavatorCount = 0;
   private StringBuilder logResult = new StringBuilder();
   public OreSim(Properties properties, MapGrid grid)
   {
@@ -134,31 +135,13 @@ public class OreSim extends GameGrid implements GGKeyListener
     File statisticsFile = new File("statistics.txt");
     FileWriter fileWriter = null;
 
-    int pusherMoves = 0, excavatorMoves = 0, bulldozerMoves = 0;
-    int rocksRemovedCount = 0, clayRemovedCount = 0;
-
-    if (pusher != null) {
-      pusherMoves = pusher.getMovesCount();
-    }
-
-    if (excavator != null) {
-      excavatorMoves = excavator.getMovesCount();
-      rocksRemovedCount = excavator.getItemsRemovedCount();
-    }
-
-    if (bulldozer != null) {
-      bulldozerMoves = bulldozer.getMovesCount();
-      clayRemovedCount = bulldozer.getItemsRemovedCount();
-    }
-
-
     try {
       fileWriter = new FileWriter(statisticsFile);
-      fileWriter.write("Pusher-1 Moves: " + pusherMoves + "\n");
-      fileWriter.write("Excavator-1 Moves: " + excavatorMoves + "\n");
-      fileWriter.write("Excavator-1 Rock removed: " + rocksRemovedCount + "\n");
-      fileWriter.write("Bulldozer-1 Moves: " + bulldozerMoves + "\n");
-      fileWriter.write("Bulldozer-1 Clay removed: " + clayRemovedCount + "\n");
+      if (pusher != null ) fileWriter.write("Pusher-" + pusher.getID() + " Moves: " + pusher.getMovesCount() + "\n");
+      if (excavator != null ) fileWriter.write("Excavator-" + excavator.getID() + " Moves: " + excavator.getMovesCount() + "\n");
+      if (excavator != null ) fileWriter.write("Excavator-" + excavator.getID() + " Rock removed: " + excavator.getItemsRemovedCount() + "\n");
+      if (bulldozer != null ) fileWriter.write("Bulldozer-" + bulldozer.getID() + " Moves: " + bulldozer.getMovesCount() + "\n");
+      if (bulldozer != null ) fileWriter.write("Bulldozer-" + bulldozer.getID() + " Clay removed: " + bulldozer.getItemsRemovedCount() + "\n");
     } catch (IOException e) {
       System.out.println("Cannot write to file - e: " + e.getLocalizedMessage());
     } finally {

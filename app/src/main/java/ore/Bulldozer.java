@@ -12,16 +12,18 @@ public class Bulldozer implements Machine {
 
 public class Bulldozer extends Actor implements Machine
 {
+    private int ID;
     private List<String> controls = null;
     private int autoMovementIndex = 0;
     private int movesCount = 0;
     private int itemsRemovedCount = 0;
     private OreSim oreSim;
 
-    public Bulldozer(OreSim oreSim)
+    public Bulldozer(OreSim oreSim, int ID)
     {
         super(true, "sprites/bulldozer.png");  // Rotatable
         this.oreSim = oreSim;
+        this.ID = ID;
     }
     public void setupBulldozer(boolean isAutoMode, List<String> controls) {
         this.controls = controls;
@@ -105,13 +107,15 @@ public class Bulldozer extends Actor implements Machine
         return true;
     }
 
-    // Method to retrieve moves count
     public int getMovesCount() {
         return movesCount;
     }
 
-    // Method to retrieve items removed count
     public int getItemsRemovedCount() {
         return itemsRemovedCount;
+    }
+
+    public int getID() {
+        return ID;
     }
 }
