@@ -59,10 +59,6 @@ public class Bulldozer extends Actor implements Machine
                         break;
                 }
 
-                /*Target curTarget = (Target) oreSim.getOneActorAt(getLocation(), Target.class);
-                if (curTarget != null){
-                    curTarget.show();
-                }*/
                 if (next != null && canMove(next))
                 {
                     setLocation(next);
