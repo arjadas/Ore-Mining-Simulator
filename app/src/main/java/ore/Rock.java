@@ -1,8 +1,4 @@
 package ore;
-/*
-public class Rock implements  Item {
-}
-*/
 
 import ch.aplu.jgamegrid.Actor;
 

@@ -1,5 +1,5 @@
-
 package ore;
+
 import ch.aplu.jgamegrid.*;
 
 public class MapGrid
@@ -8,8 +8,6 @@ public class MapGrid
   private static int nbVertCells = -1;
   private OreSim.ElementType[][] mapElements; // = new OreSim.ElementType[nbHorzCells][nbVertCells];
   private int nbStones = 0;
-
-
 
   private final static String[] mapModel =
           {
