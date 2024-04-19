@@ -3,7 +3,7 @@
  ## Team Members
 - Arja Das, Email, @GitHub account
 - Min Thu Han, minthuh@student.unimelb.edu.au, @MinniMinMin
-- Yiyan Zhang, Email, @GitHub account
+- Yiyan Zhang,yiyan2@student.unimelb.edu.au, @TheYiyan
 
  ## Documentation files
 - Link to Draw.io : https://drive.google.com/file/d/1GXL-qoznDUlHJOVFA72AAuN-NfNwjEPN/view?usp=sharing
