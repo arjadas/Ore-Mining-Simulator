@@ -1,7 +1,4 @@
 package ore;
-/*
-public class Excavator implements Machine {
-}*/
 
 import ch.aplu.jgamegrid.Actor;
 import ch.aplu.jgamegrid.Location;
@@ -63,10 +60,6 @@ public class Excavator extends Actor implements Machine
                         break;
                 }
 
-                /*Target curTarget = (Target) oreSim.getOneActorAt(getLocation(), Target.class);
-                if (curTarget != null){
-                    curTarget.show();
-                }*/
                 if (next != null && canMove(next))
                 {
                     setLocation(next);
@@ -107,12 +100,10 @@ public class Excavator extends Actor implements Machine
         return true;
     }
 
-    // Method to retrieve moves count
     public int getMovesCount() {
         return movesCount;
     }
 
-    // Method to retrieve items removed count
     public int getItemsRemovedCount() {
         return itemsRemovedCount;
     }

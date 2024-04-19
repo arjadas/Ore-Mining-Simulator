@@ -1,6 +1,5 @@
 package ore;
 
-import ch.aplu.jgamegrid.*;
 import ch.aplu.jgamegrid.Actor;
 import ch.aplu.jgamegrid.GGBackground;
 import ch.aplu.jgamegrid.Location;

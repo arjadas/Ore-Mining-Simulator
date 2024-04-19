@@ -6,14 +6,8 @@ import ch.aplu.jgamegrid.Location;
 import java.awt.*;
 import java.util.List;
 
-/*
-public class Ore implements Item {
-}*/
-
 public class Ore extends Actor implements Item
 {
-
-
     public Ore()
     {
         super("sprites/ore.png",2);

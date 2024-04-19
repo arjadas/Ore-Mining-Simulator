@@ -6,10 +6,6 @@ import ch.aplu.jgamegrid.Location;
 import java.awt.*;
 import java.util.List;
 
-/*
-public class Bulldozer implements Machine {
-}*/
-
 public class Bulldozer extends Actor implements Machine
 {
     private int ID;

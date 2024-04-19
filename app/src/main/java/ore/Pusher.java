@@ -1,8 +1,4 @@
 package ore;
-/*
-public class Pusher implements Machine{
-}
-*/
 
 import ch.aplu.jgamegrid.Actor;
 import ch.aplu.jgamegrid.Location;

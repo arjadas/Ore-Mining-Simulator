@@ -1,7 +1,4 @@
 package ore;
-/*
-public class Clay implements Item {
-}*/
 
 import ch.aplu.jgamegrid.Actor;
 

@@ -41,7 +41,7 @@ public class OreSim extends GameGrid implements GGKeyListener
   }
 
   // ------------- End of inner classes ------
-  //
+
   protected MapGrid grid;
   public static final Color borderColor = new Color(100, 100, 100);
   protected Ore[] ores;
@@ -137,11 +137,24 @@ public class OreSim extends GameGrid implements GGKeyListener
 
     try {
       fileWriter = new FileWriter(statisticsFile);
-      if (pusher != null ) fileWriter.write("Pusher-" + pusher.getID() + " Moves: " + pusher.getMovesCount() + "\n");
-      if (excavator != null ) fileWriter.write("Excavator-" + excavator.getID() + " Moves: " + excavator.getMovesCount() + "\n");
-      if (excavator != null ) fileWriter.write("Excavator-" + excavator.getID() + " Rock removed: " + excavator.getItemsRemovedCount() + "\n");
-      if (bulldozer != null ) fileWriter.write("Bulldozer-" + bulldozer.getID() + " Moves: " + bulldozer.getMovesCount() + "\n");
-      if (bulldozer != null ) fileWriter.write("Bulldozer-" + bulldozer.getID() + " Clay removed: " + bulldozer.getItemsRemovedCount() + "\n");
+
+      if (pusher != null )
+        fileWriter.write("Pusher-" + pusher.getID() + " Moves: " + pusher.getMovesCount() + "\n");
+
+      if (excavator != null )
+        fileWriter.write("Excavator-" + excavator.getID() + " Moves: " + excavator.getMovesCount() + "\n");
+
+      if (excavator != null )
+        fileWriter.write("Excavator-" + excavator.getID() + " Rock removed: " + excavator.getItemsRemovedCount() +
+                "\n");
+
+      if (bulldozer != null )
+        fileWriter.write("Bulldozer-" + bulldozer.getID() + " Moves: " + bulldozer.getMovesCount() + "\n");
+
+      if (bulldozer != null )
+        fileWriter.write("Bulldozer-" + bulldozer.getID() + " Clay removed: " + bulldozer.getItemsRemovedCount() +
+                "\n");
+
     } catch (IOException e) {
       System.out.println("Cannot write to file - e: " + e.getLocalizedMessage());
     } finally {
@@ -152,8 +165,6 @@ public class OreSim extends GameGrid implements GGKeyListener
       }
     }
   }
-
-
 
   /**
    * The method is automatically called by the framework when a key is pressed. Based on the pressed key, the pusher
@@ -191,7 +202,6 @@ public class OreSim extends GameGrid implements GGKeyListener
     if (curTarget != null){
       curTarget.show();
     }
-
 
     if (next != null && pusher.canMove(next))
     {
